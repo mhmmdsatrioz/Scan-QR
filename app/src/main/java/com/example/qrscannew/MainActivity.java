@@ -88,16 +88,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                         startActivity(browserIntent);
                     }
-                   // 3.kirim email pada barcode yang sudah ter-scan
+                   // 2.kirim email pada barcode yang sudah ter-scan
 
-                    String alamat = new String(result.getContents());
+                    String alamatEmail = new String(result.getContents());
                     String at = "@";
 
-                    if (alamat.contains(at))
+                    if (alamatEmail.contains(at))
 
                     {
                         Intent intent = new Intent(Intent.ACTION_SEND);
-                        String[] recipients = {alamat.replace("http://","")};
+                        String[] recipients = {alamatEmail.replace("http://","")};
                         intent.putExtra(Intent.EXTRA_EMAIL, recipients);
                         intent.putExtra(Intent.EXTRA_SUBJECT, "Subject Email");
                         intent.putExtra(Intent.EXTRA_TEXT, "Type Here");
@@ -107,17 +107,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         startActivity(Intent.createChooser(intent, "Send mail"));
                     }
 
-                    //Dial number
+                    //3. Dial number
                     String number;
                     number = new String(result.getContents());
 
-                    if(number.matches("^[0-9]*$") && number.length() > 11){
+                    if(number.matches("^[0-9]*$") && number.length() > 10){
                         Intent callIntent = new Intent(Intent.ACTION_DIAL);
                         Intent dialIntent = new Intent(Intent.ACTION_CALL);
                         dialIntent.setData(Uri.parse("tel:" + number));
                         callIntent.setData(Uri.parse("tel:" + number));
                         startActivity(callIntent);
                         startActivity(dialIntent);
+                    }
+
+                    //4.buka koordinat maps
+
+                    String uriMaps = new String(result.getContents());
+                    String maps = "http://maps.google.com/maps?q=loc:" + uriMaps;
+                    String testDoubleData1 = ",";
+                    String testDoubleData2 = ".";
+
+                    boolean b = uriMaps.contains(testDoubleData1) && uriMaps.contains(testDoubleData2);
+                    if (b) {
+                        Intent mapsIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(maps));
+                        mapsIntent.setPackage("com.google.android.apps.maps");
+                        startActivity(mapsIntent);
                     }
 
                 }
