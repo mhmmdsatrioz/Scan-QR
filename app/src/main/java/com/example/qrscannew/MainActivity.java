@@ -107,13 +107,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         startActivity(Intent.createChooser(intent, "Send mail"));
                     }
 
-                    //3. Dial number
+                    //3a. Dial number
                     String number;
                     number = new String(result.getContents());
 
                     if(number.matches("^[0-9]*$") && number.length() > 10){
-                        Intent callIntent = new Intent(Intent.ACTION_DIAL);
-                        Intent dialIntent = new Intent(Intent.ACTION_CALL);
+                        Intent callIntent = new Intent(Intent.ACTION_CALL);
+                        Intent dialIntent = new Intent(Intent.ACTION_DIAL);
                         dialIntent.setData(Uri.parse("tel:" + number));
                         callIntent.setData(Uri.parse("tel:" + number));
                         startActivity(callIntent);
