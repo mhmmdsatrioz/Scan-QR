@@ -1,5 +1,3 @@
-# scanver1
-
-Nama : Budi Ariyanto
+Nama : Muhammad Bayou Satrio
 Kelas : TI.2.C6
-NIM : 312110159
+NIM : 312110132

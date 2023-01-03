@@ -29,7 +29,7 @@
             android:id="@+id/textViewNama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Budi Ariyanto"
+            android:text="Muhammad Bayou Satrio"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
         <TextView
             android:layout_width="match_parent"
@@ -49,7 +49,7 @@
             android:id="@+id/textViewNim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="312110159"
+            android:text="312110132"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     </LinearLayout>
 </RelativeLayout>
